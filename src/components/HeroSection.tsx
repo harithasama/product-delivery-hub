@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -87,9 +88,11 @@ export function HeroSection() {
                   <span className="text-muted-foreground">{displayText}</span>
                   <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
                 </div>
-                <Button variant="gradient" size="lg" className="shrink-0">
-                  <Sparkles className="w-4 h-4" />
-                  Create Task
+                <Button variant="gradient" size="lg" className="shrink-0" asChild>
+                  <Link to="/create-task">
+                    <Sparkles className="w-4 h-4" />
+                    Create Task
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -97,12 +100,16 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-            <Button variant="hero" size="xl">
-              Create Your First Task
-              <ArrowRight className="w-5 h-5" />
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/create-task">
+                Create Your First Task
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </Button>
-            <Button variant="hero-secondary" size="xl">
-              Try a $250 Quick Fix
+            <Button variant="hero-secondary" size="xl" asChild>
+              <Link to="/create-task">
+                Try a $250 Quick Fix
+              </Link>
             </Button>
           </div>
         </div>
