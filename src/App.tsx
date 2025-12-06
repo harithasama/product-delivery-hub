@@ -9,6 +9,7 @@ import CreateTaskV2 from "./pages/CreateTaskV2";
 import DualHomepage from "./pages/DualHomepage";
 import OpenSource from "./pages/OpenSource";
 import OSSForProduct from "./pages/OSSForProduct";
+import PublishTask from "./pages/PublishTask";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/dual" element={<DualHomepage />} />
           <Route path="/oss" element={<OpenSource />} />
           <Route path="/ossforproduct" element={<OSSForProduct />} />
+          <Route path="/publishtask" element={<PublishTask />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
