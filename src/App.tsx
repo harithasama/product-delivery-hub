@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CreateTask from "./pages/CreateTask";
 import DualHomepage from "./pages/DualHomepage";
+import OpenSource from "./pages/OpenSource";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/create-task" element={<CreateTask />} />
           <Route path="/dual" element={<DualHomepage />} />
+          <Route path="/oss" element={<OpenSource />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
