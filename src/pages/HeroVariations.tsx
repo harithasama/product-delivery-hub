@@ -2,16 +2,16 @@ import { HeroInputOption1 } from "@/components/HeroInputOption1";
 import { HeroInputOption2 } from "@/components/HeroInputOption2";
 import { HeroInputOption3 } from "@/components/HeroInputOption3";
 import { HeroInputOption4 } from "@/components/HeroInputOption4";
-
 export default function HeroVariations() {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       {/* Option 1 */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 gradient-hero opacity-90" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl floating" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl floating" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl floating" style={{
+          animationDelay: "1s"
+        }} />
         </div>
         
         <div className="container relative z-10 px-4 py-16">
@@ -30,8 +30,12 @@ export default function HeroVariations() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background">
         <div className="absolute inset-0 gradient-hero opacity-60" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl floating" style={{ animationDelay: "0.5s" }} />
-          <div className="absolute bottom-10 left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl floating" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute top-20 right-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl floating" style={{
+          animationDelay: "0.5s"
+        }} />
+          <div className="absolute bottom-10 left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl floating" style={{
+          animationDelay: "1.5s"
+        }} />
         </div>
         
         <div className="container relative z-10 px-4 py-16">
@@ -50,8 +54,12 @@ export default function HeroVariations() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 gradient-hero opacity-90" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-1/3 w-96 h-96 bg-accent/15 rounded-full blur-3xl floating" style={{ animationDelay: "0.3s" }} />
-          <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl floating" style={{ animationDelay: "1.2s" }} />
+          <div className="absolute top-10 left-1/3 w-96 h-96 bg-accent/15 rounded-full blur-3xl floating" style={{
+          animationDelay: "0.3s"
+        }} />
+          <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl floating" style={{
+          animationDelay: "1.2s"
+        }} />
         </div>
         
         <div className="container relative z-10 px-4 py-16">
@@ -71,20 +79,20 @@ export default function HeroVariations() {
         <div className="absolute inset-0 gradient-hero opacity-80" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-20 w-80 h-80 bg-primary/15 rounded-full blur-3xl floating" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl floating" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl floating" style={{
+          animationDelay: "1s"
+        }} />
         </div>
         
-        <div className="container relative z-10 px-4 py-16">
+        <div className="container relative z-10 px-4 py-16 border-primary-foreground">
           <div className="text-center mb-8">
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
-              Option 4 — Animated Typing Suggestions
-            </span>
-            <h2 className="text-3xl font-bold text-foreground mb-2">Single Button, Dynamic Text</h2>
-            <p className="text-muted-foreground">One button, cycling suggestions that appeal to both PMs and Contributors</p>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">For Product Teams & Contributors</span>
+            <h2 className="text-3xl font-bold text-foreground mb-2">Ship Faster. Fix Bottlenecks</h2>
+            <p className="text-muted-foreground">For Product Teams who want momentum and 
+for contributors who want meaningful work</p>
           </div>
           <HeroInputOption4 />
         </div>
       </section>
-    </div>
-  );
+    </div>;
 }
