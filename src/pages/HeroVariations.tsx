@@ -1,6 +1,7 @@
 import { HeroInputOption1 } from "@/components/HeroInputOption1";
 import { HeroInputOption2 } from "@/components/HeroInputOption2";
 import { HeroInputOption3 } from "@/components/HeroInputOption3";
+import { HeroInputOption4 } from "@/components/HeroInputOption4";
 
 export default function HeroVariations() {
   return (
@@ -62,6 +63,26 @@ export default function HeroVariations() {
             <p className="text-muted-foreground">Compact segmented control inside the input box</p>
           </div>
           <HeroInputOption3 />
+        </div>
+      </section>
+
+      {/* Option 4 - NEW: Animated Suggestions */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background">
+        <div className="absolute inset-0 gradient-hero opacity-80" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-20 w-80 h-80 bg-primary/15 rounded-full blur-3xl floating" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl floating" style={{ animationDelay: "1s" }} />
+        </div>
+        
+        <div className="container relative z-10 px-4 py-16">
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
+              Option 4 — Animated Typing Suggestions
+            </span>
+            <h2 className="text-3xl font-bold text-foreground mb-2">Single Button, Dynamic Text</h2>
+            <p className="text-muted-foreground">One button, cycling suggestions that appeal to both PMs and Contributors</p>
+          </div>
+          <HeroInputOption4 />
         </div>
       </section>
     </div>
