@@ -2,13 +2,48 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-const suggestions = ["Fix our mobile layout issues...", "Improve dashboard loading speed...", "Add missing error messages...", "Update the checkout flow UX..."];
+
+const ownerSuggestions = [
+  "Fix our mobile layout issues…",
+  "Improve dashboard loading speed…",
+  "Add missing error messages…",
+  "Update the checkout flow UX…",
+  "Polish UI details that improve user satisfaction…",
+  "Reduce backlog with fast, high-quality fixes…",
+];
+
+const contributorSuggestions = [
+  "Help optimize React components…",
+  "Refactor legacy code for better performance…",
+  "Resolve API integration bugs…",
+  "Improve accessibility across key pages…",
+  "Contribute impactful fixes to real products…",
+  "Earn rewards for solving meaningful issues…",
+];
+
+type Role = "owner" | "contributor";
+
 export function HeroSection() {
+  const [inputValue, setInputValue] = useState("");
+  const [role, setRole] = useState<Role>("owner");
   const [currentSuggestion, setCurrentSuggestion] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+
+  const suggestions = role === "owner" ? ownerSuggestions : contributorSuggestions;
+
+  // Reset animation when role changes
   useEffect(() => {
+    setCurrentSuggestion(0);
+    setDisplayText("");
+    setIsTyping(true);
+  }, [role]);
+
+  useEffect(() => {
+    if (inputValue) return;
+
     const suggestion = suggestions[currentSuggestion];
+    
     if (isTyping) {
       if (displayText.length < suggestion.length) {
         const timeout = setTimeout(() => {
@@ -16,9 +51,7 @@ export function HeroSection() {
         }, 50);
         return () => clearTimeout(timeout);
       } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(false);
-        }, 2000);
+        const timeout = setTimeout(() => setIsTyping(false), 2000);
         return () => clearTimeout(timeout);
       }
     } else {
@@ -28,12 +61,14 @@ export function HeroSection() {
         }, 30);
         return () => clearTimeout(timeout);
       } else {
-        setCurrentSuggestion(prev => (prev + 1) % suggestions.length);
+        setCurrentSuggestion((prev) => (prev + 1) % suggestions.length);
         setIsTyping(true);
       }
     }
-  }, [displayText, isTyping, currentSuggestion]);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  }, [displayText, isTyping, currentSuggestion, inputValue, suggestions]);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-10" />
       
@@ -60,31 +95,73 @@ export function HeroSection() {
 
           {/* Headline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up" style={{
-          animationDelay: "0.1s"
-        }}>
+            animationDelay: "0.1s"
+          }}>
             Ship Faster.{" "}
             <span className="gradient-text">Fix Bottlenecks.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{
-          animationDelay: "0.2s"
-        }}>For product teams who want momentum — and for contributors who want meaningful work.</p>
+            animationDelay: "0.2s"
+          }}>For product teams who want momentum — and for contributors who want meaningful work.</p>
 
-          {/* Prompt Box */}
-          <div className="relative max-w-2xl mx-auto mb-10 animate-scale-in" style={{
-          animationDelay: "0.3s"
-        }}>
+          {/* Role Tabs + Input Box */}
+          <div className="max-w-2xl mx-auto mb-10 animate-scale-in" style={{
+            animationDelay: "0.3s"
+          }}>
+            {/* Role Tabs on Top */}
+            <div className="flex justify-center gap-2 mb-3">
+              <button
+                onClick={() => setRole("owner")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  role === "owner"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-card/60 text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border/50"
+                }`}
+              >
+                I need help
+              </button>
+              <button
+                onClick={() => setRole("contributor")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  role === "contributor"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-card/60 text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border/50"
+                }`}
+              >
+                I can help
+              </button>
+            </div>
+
+            {/* Input Box */}
             <div className="glass-card rounded-2xl p-2 gradient-border">
-              <div className="flex items-center gap-3 bg-background rounded-xl p-4 min-h-[80px]">
-                <div className="flex-1 text-left">
-                  <span className="text-muted-foreground">{displayText}</span>
-                  <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
+              <div className="flex items-center gap-3 bg-background rounded-xl p-2">
+                {/* Input with animated placeholder */}
+                <div className="flex-1 relative min-w-0">
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    className="w-full bg-transparent border-none outline-none px-4 py-4 text-lg text-foreground"
+                    placeholder=""
+                  />
+                  {!inputValue && (
+                    <div className="absolute inset-0 flex items-center px-4 pointer-events-none">
+                      <span className="text-lg text-muted-foreground/60 truncate">
+                        {displayText}
+                        <span className="animate-pulse">|</span>
+                      </span>
+                    </div>
+                  )}
                 </div>
-                <Button variant="gradient" size="lg" className="shrink-0" asChild>
+
+                {/* Single action button */}
+                <Button variant="gradient" size="lg" className="shrink-0 gap-2" asChild>
                   <Link to="/create-task">
                     <Sparkles className="w-4 h-4" />
-                    Create Task
+                    {role === "owner" ? "Post Task" : "Find Tasks"}
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>
@@ -93,8 +170,8 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{
-          animationDelay: "0.4s"
-        }}>
+            animationDelay: "0.4s"
+          }}>
             <Button variant="hero" size="xl" asChild>
               <Link to="/create-task">
                 Create Your First Task
@@ -112,5 +189,6 @@ export function HeroSection() {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>;
+    </section>
+  );
 }
