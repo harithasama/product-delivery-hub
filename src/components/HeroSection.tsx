@@ -2,22 +2,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-
-const suggestions = [
-  "Fix our mobile layout issues...",
-  "Improve dashboard loading speed...",
-  "Add missing error messages...",
-  "Update the checkout flow UX...",
-];
-
+const suggestions = ["Fix our mobile layout issues...", "Improve dashboard loading speed...", "Add missing error messages...", "Update the checkout flow UX..."];
 export function HeroSection() {
   const [currentSuggestion, setCurrentSuggestion] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-
   useEffect(() => {
     const suggestion = suggestions[currentSuggestion];
-    
     if (isTyping) {
       if (displayText.length < suggestion.length) {
         const timeout = setTimeout(() => {
@@ -37,14 +28,12 @@ export function HeroSection() {
         }, 30);
         return () => clearTimeout(timeout);
       } else {
-        setCurrentSuggestion((prev) => (prev + 1) % suggestions.length);
+        setCurrentSuggestion(prev => (prev + 1) % suggestions.length);
         setIsTyping(true);
       }
     }
   }, [displayText, isTyping, currentSuggestion]);
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-10" />
       
@@ -70,18 +59,22 @@ export function HeroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up" style={{
+          animationDelay: "0.1s"
+        }}>
             Ship Faster.{" "}
             <span className="gradient-text">Fix Bottlenecks.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Get UI fixes, bugs, docs, and small features done fast — without derailing your roadmap.
-          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{
+          animationDelay: "0.2s"
+        }}>For product teams who want momentum — and for contributors who want meaningful work.</p>
 
           {/* Prompt Box */}
-          <div className="relative max-w-2xl mx-auto mb-10 animate-scale-in" style={{ animationDelay: "0.3s" }}>
+          <div className="relative max-w-2xl mx-auto mb-10 animate-scale-in" style={{
+          animationDelay: "0.3s"
+        }}>
             <div className="glass-card rounded-2xl p-2 gradient-border">
               <div className="flex items-center gap-3 bg-background rounded-xl p-4 min-h-[80px]">
                 <div className="flex-1 text-left">
@@ -99,7 +92,9 @@ export function HeroSection() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{
+          animationDelay: "0.4s"
+        }}>
             <Button variant="hero" size="xl" asChild>
               <Link to="/create-task">
                 Create Your First Task
@@ -117,6 +112,5 @@ export function HeroSection() {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>
-  );
+    </section>;
 }
