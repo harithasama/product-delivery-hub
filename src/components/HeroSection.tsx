@@ -168,21 +168,25 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{
+          {/* Or Connect Integrations */}
+          <div className="flex items-center justify-center gap-4 animate-fade-in-up" style={{
             animationDelay: "0.4s"
           }}>
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/create-task">
-                Create Your First Task
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
-            <Button variant="hero-secondary" size="xl" asChild>
-              <Link to="/create-task">
-                Try a $250 Quick Fix
-              </Link>
-            </Button>
+            <span className="text-sm text-muted-foreground">or connect</span>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 border border-border/50 text-sm font-medium text-foreground">
+                <span className="text-lg">💜</span>
+                Lovable
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 border border-border/50 text-sm font-medium text-foreground">
+                <span className="text-lg">🔷</span>
+                replit
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 border border-border/50 text-sm font-medium text-foreground">
+                <span className="text-lg">⚡</span>
+                bolt<span className="text-xs text-muted-foreground">.new</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
