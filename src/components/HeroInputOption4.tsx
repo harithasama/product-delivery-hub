@@ -70,43 +70,44 @@ export function HeroInputOption4() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      {/* Role Tabs on Top */}
+      <div className="flex justify-center gap-2 mb-3">
+        <button
+          onClick={() => setRole("owner")}
+          className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            role === "owner"
+              ? "bg-primary text-primary-foreground shadow-md"
+              : "bg-card/60 text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border/50"
+          }`}
+        >
+          I need help
+        </button>
+        <button
+          onClick={() => setRole("contributor")}
+          className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            role === "contributor"
+              ? "bg-primary text-primary-foreground shadow-md"
+              : "bg-card/60 text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border/50"
+          }`}
+        >
+          I can help
+        </button>
+      </div>
+
+      {/* Input Box */}
       <div className="glass-card p-2 rounded-2xl">
         <div className="flex items-center gap-3">
-          {/* Role Selector - Subtle pills */}
-          <div className="flex text-xs shrink-0 border-r border-border/30 pr-3">
-            <button
-              onClick={() => setRole("owner")}
-              className={`px-2.5 py-1.5 rounded-l-lg transition-all duration-200 ${
-                role === "owner"
-                  ? "bg-primary/15 text-primary font-medium"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              I need help
-            </button>
-            <button
-              onClick={() => setRole("contributor")}
-              className={`px-2.5 py-1.5 rounded-r-lg transition-all duration-200 ${
-                role === "contributor"
-                  ? "bg-primary/15 text-primary font-medium"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              I want to help
-            </button>
-          </div>
-
           {/* Input with animated placeholder */}
           <div className="flex-1 relative min-w-0">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full bg-transparent border-none outline-none px-3 py-4 text-lg text-foreground"
+              className="w-full bg-transparent border-none outline-none px-4 py-4 text-lg text-foreground"
               placeholder=""
             />
             {!inputValue && (
-              <div className="absolute inset-0 flex items-center px-3 pointer-events-none">
+              <div className="absolute inset-0 flex items-center px-4 pointer-events-none">
                 <span className="text-lg text-muted-foreground/60 truncate">
                   {displayText}
                   <span className="animate-pulse">|</span>
